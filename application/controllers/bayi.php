@@ -57,5 +57,10 @@ class Bayi extends CI_Controller {
 		}
 	}
 
+	public function edit_data_bayi($id)
+	{
+		
+	}
+
 	/* End of file bayi.php */
 /* Location: ./application/controllers/bayi.php */
