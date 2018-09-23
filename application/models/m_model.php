@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_model extends CI_Model {
 
-	public function getBayi()
+	public function showBayi()
 	{
 		return $this->db->get('tb_bayi')->result_object();
 	}
@@ -13,9 +13,14 @@ class M_model extends CI_Model {
 		return $this->db->insert("tb_bayi", $data);
 	}	
 
-	public function getwhereBayi($id)
+	public function getBayi($id)
 	{
 		return $this->db->get_where('tb_bayi', array('id_bayi' => $id))->row();
+	}
+
+	public function updateBayi($data)
+	{
+		return $this->db->update('tb_bayi', $data);
 	}
 }
 

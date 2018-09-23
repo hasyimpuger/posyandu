@@ -25,6 +25,14 @@
 				<input type="text" name="ibu" class="form-control" value="<?php echo $bayi->nama_ibu; ?>">
 				<div style="color: red"><?php echo form_error('ibu'); ?></div>
 			</div>
+			<div class="form-group">
+				<label for="status">Status</label>
+				<select name="status" class="form-control">
+					<option value="<?php echo $bayi->status ?>"><?php echo $bayi->status ?></option>
+					<option value="Tidak Aktif">Tidak Aktif</option>
+					<option value="Aktif">Aktif</option>
+				</select>	
+			</div>
 			<input type="submit" name="simpan" class="btn btn-md btn-info" value="Simpan">
 		<?php echo form_close(); ?>
 	</div>

@@ -11,7 +11,7 @@ class Bayi extends CI_Controller {
 
 	public function index()
 	{
-		$data['bayi'] = $this->m_model->getBayi();
+		$data['bayi'] = $this->m_model->showBayi();
 		$data['content'] = 'content/bayi/bayi';
 		$data['title'] = "Data Balita/Bayi - Posyandu";
 		$this->load->view('home', $data);
@@ -61,7 +61,7 @@ class Bayi extends CI_Controller {
 		{
 			$data['content'] = 'content/bayi/edit_bayi';
 			$data['title'] = "Edit Data Bayi - Posyandu";
-			$data['bayi'] = $this->m_model->getwhereBayi($id); 
+			$data['bayi'] = $this->m_model->getBayi($id); 
 			$this->load->view('home', $data);
 		}
 
