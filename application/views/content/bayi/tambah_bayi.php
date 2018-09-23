@@ -16,6 +16,11 @@
 				<div style="color: red"><?php echo form_error('tanggal'); ?></div>	
 			</div>
 			<div class="form-group">
+				<label for="jkelamin">Jenis Kelamin</label><br>
+				<label class="radio-inline"><input type="radio" name="jkelamin" value="Laki-Laki"/> Laki-Laki</label>&nbsp;&nbsp;
+				<label class="radio-inline"><input type="radio" name="jkelamin" value="Perempuan"/>	Perempuan</label>
+			</div>
+			<div class="form-group">
 				<label for="ayah">Nama Ayah</label>
 				<input type="text" name="ayah" class="form-control" value="<?php echo set_value('ayah'); ?>">
 				<div style="color: red"><?php echo form_error('ayah'); ?></div>

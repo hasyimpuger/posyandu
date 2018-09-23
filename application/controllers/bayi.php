@@ -22,10 +22,11 @@ class Bayi extends CI_Controller {
 		if($this->input->post('simpan')) 
 		{
 			$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
-			$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required');
+			$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required|alpha_numeric_spaces');
 			$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'trim|required');
-			$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required');
-			$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required');
+			$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
+			$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
+			$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$data['content'] = 'content/bayi/tambah_bayi';
@@ -35,12 +36,14 @@ class Bayi extends CI_Controller {
 				{
 					$nama = $this->input->post('nama');
 					$tl = $this->input->post('tanggal');
+					$jkelamin = $this->input->post('jkelamin');
 					$ayah = $this->input->post('ayah');
 					$ibu = $this->input->post('ibu');
 					$status = "Aktif";
 					$obj = array(
 						'nama_bayi' => $nama,
 						'tanggal_lahir' => $tl,
+						'jenis_kelamin' => $jkelamin,
 						'nama_ayah' => $ayah,
 						'nama_ibu' => $ibu,
 						'status' => $status

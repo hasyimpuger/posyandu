@@ -41,6 +41,10 @@
 														<td><?php echo $b->tanggal_lahir; ?></td>
 													</tr>
 													<tr>
+														<td><label>Jenis Kelamin</label></td>
+														<td><?php echo $b->jenis_kelamin; ?></td>
+													</tr>
+													<tr>
 														<td><label>Nama Ayah</label></td>
 														<td><?php echo $b->nama_ayah; ?></td>
 													</tr>
