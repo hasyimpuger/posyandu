@@ -49,7 +49,8 @@ class Bayi extends CI_Controller {
 					redirect('bayi','refresh');
 				}
 			}
-			else {
+			else 
+			{
 				$data['content'] = 'content/bayi/tambah_bayi';
 				$data['title'] = "Tambah Data Balita/Bayi - Posyandu";
 				$this->load->view('home', $data);
@@ -63,6 +64,8 @@ class Bayi extends CI_Controller {
 			$data['bayi'] = $this->m_model->getwhereBayi($id); 
 			$this->load->view('home', $data);
 		}
+
+		
 	}
 	/* End of file bayi.php */
 /* Location: ./application/controllers/bayi.php */
