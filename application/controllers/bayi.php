@@ -55,12 +55,14 @@ class Bayi extends CI_Controller {
 				$this->load->view('home', $data);
 			}
 		}
-	}
 
-	public function edit_data_bayi($id)
-	{
-		
+		public function edit_data_bayi($id)
+		{
+			$data['content'] = 'content/bayi/edit_bayi';
+			$data['title'] = "Edit Data Bayi - Posyandu";
+			$data['bayi'] = $this->m_model->getwhereBayi($id); 
+			$this->load->view('home', $data);
+		}
 	}
-
 	/* End of file bayi.php */
 /* Location: ./application/controllers/bayi.php */

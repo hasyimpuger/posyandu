@@ -61,7 +61,7 @@
 
 									</div>
 								</div>
-								<a href="" title="" class="btn btn-sm btn-warning">Edit</a>
+								<a href="<?php echo base_url('bayi/edit_data_bayi/').$b->id_bayi ?>" title="" class="btn btn-sm btn-warning">Edit</a>
 								<a href="" title="" class="btn btn-sm btn-danger">Hapus</a>
 							</div>
 						</td>
