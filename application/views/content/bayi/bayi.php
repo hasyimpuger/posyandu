@@ -5,6 +5,12 @@
 	<div class="panel-body">
 		<a href="<?php echo site_url('bayi/tambah_data_bayi') ?>" title="" class="btn btn-primary">Tambah Data Balita/Bayi</a>
 		<hr>
+		<?php if($this->session->flashdata('alert')) { ?>
+			<div class="alert alert-success alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<?php echo $this->session->flashdata('alert'); ?>
+			</div>
+		<?php } ?>
 		<table class="table table-responsive table-striped table-hover table-bordered" id="mytable">
 			<thead>
 				<tr>
@@ -66,7 +72,7 @@
 									</div>
 								</div>
 								<a href="<?php echo base_url('bayi/edit_data_bayi/').$b->id_bayi ?>" title="" class="btn btn-sm btn-warning">Edit</a>
-								<a href="" title="" class="btn btn-sm btn-danger">Hapus</a>
+								<a href="<?php echo base_url('bayi/hapus_data_bayi/').$b->id_bayi ?>" title="" class="btn btn-sm btn-danger">Hapus</a>
 							</div>
 						</td>
 					</tr>

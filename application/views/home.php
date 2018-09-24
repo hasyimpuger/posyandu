@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('Asia/Kuala_Lumpur'); ?>
 <!doctype html>
 <html lang="en">
 
@@ -63,8 +64,9 @@
 					<ul class="nav">
 						<li><a href="<?php echo site_url('dashboard') ?>" class="<?php if($this->uri->segment('1') == "dashboard"){echo "active";} ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						<li><a href="<?php echo site_url('bayi') ?>" class="<?php if($this->uri->segment('1') == "bayi"){echo "active";} ?>"><i class="fa fa-user-md"></i> <span>Data Balita/Bayi</span></a></li>
-						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Penimbangan</span></a></li>
+						<li><a href="charts.html" class=""><i class="fa fa-balance-scale"></i> <span>Penimbangan</span></a></li>
 						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Imunisasi</span></a></li>
+						<li><a href="" class==""><i class="fa fa-file-pdf-o"></i><span>Laporan Penimbangan</span></a></li>
 					</ul>
 				</nav>
 			</div>

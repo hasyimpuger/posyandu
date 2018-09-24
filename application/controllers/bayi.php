@@ -49,6 +49,7 @@ class Bayi extends CI_Controller {
 						'status' => $status
 					);
 					$this->m_model->insertBayi($obj);
+					$this->session->set_flashdata('alert',"Berhasil Disimpan");
 					redirect('bayi','refresh');
 				}
 			}
@@ -95,6 +96,7 @@ class Bayi extends CI_Controller {
 					);
 					$this->db->where('id_bayi', $id);
 					$this->m_model->updateBayi($obj);
+					$this->session->set_flashdata('alert',"Berhasil Diedit");
 					redirect('bayi');
 				}
 			} 
@@ -107,7 +109,12 @@ class Bayi extends CI_Controller {
 			}
 		}
 
-		
+		public function hapus_data_bayi($id)
+		{
+			$this->m_model->deleteBayi($id);
+			$this->session->set_flashdata('alert',"Berhasil Dihapus");
+			redirect('bayi');
+		}
 	}
 	/* End of file bayi.php */
 /* Location: ./application/controllers/bayi.php */

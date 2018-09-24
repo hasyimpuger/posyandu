@@ -22,6 +22,11 @@ class M_model extends CI_Model {
 	{
 		return $this->db->update('tb_bayi', $data);
 	}
+
+	public function deleteBayi($id)
+	{
+		return $this->db->delete('tb_bayi', array('id_bayi' => $id));
+	}
 }
 
 /* End of file m_model.php */
