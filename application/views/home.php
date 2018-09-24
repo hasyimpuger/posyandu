@@ -105,8 +105,6 @@
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/plugin/datatables/datatables.min.js"></script>
 	<script type="text/javascript">
 		flatpickr("#flatpickr", {
-			// altInput: true,
-			// altFormat: "j F Y",
 			dateFormat: "Y-m-d",
 		});
 
