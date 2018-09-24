@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		<hr>
-		<?php echo form_open('bayi/tambah_data_bayi/'.$bayi->id_bayi); ?>
+		<?php echo form_open('bayi/edit_data_bayi/'.$bayi->id_bayi); ?>
 			<div class="form-group">
 				<label for="nama">Nama Bayi</label>
 				<input type="text" name="nama" class="form-control" value="<?php echo $bayi->nama_bayi; ?>">

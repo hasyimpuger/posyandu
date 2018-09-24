@@ -62,10 +62,49 @@ class Bayi extends CI_Controller {
 
 		public function edit_data_bayi($id)
 		{
-			$data['content'] = 'content/bayi/edit_bayi';
-			$data['title'] = "Edit Data Bayi - Posyandu";
-			$data['bayi'] = $this->m_model->getBayi($id); 
-			$this->load->view('home', $data);
+			if($this->input->post('simpan'))
+			{
+				$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
+				$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'trim|required');
+				$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
+				$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
+				if($this->form_validation->run() == FALSE)
+				{
+					$data['content'] = 'content/bayi/edit_bayi';
+					$data['title'] = "Edit Data Bayi - Posyandu";
+					$data['bayi'] = $this->m_model->getBayi($id); 
+					$this->load->view('home', $data);
+				} 
+				else
+				{
+					$nama = $this->input->post('nama');
+					$tl = $this->input->post('tanggal');
+					$jkelamin = $this->input->post('jkelamin');
+					$ayah = $this->input->post('ayah');
+					$ibu = $this->input->post('ibu');
+					$status = $this->input->post('status');
+					$obj = array(
+						'nama_bayi' => $nama,
+						'tanggal_lahir' => $tl,
+						'jenis_kelamin' => $jkelamin,
+						'nama_ayah' => $ayah,
+						'nama_ibu' => $ibu,
+						'status' => $status
+					);
+					$this->db->where('id_bayi', $id);
+					$this->m_model->updateBayi($obj);
+					redirect('bayi');
+				}
+			} 
+			else
+			{
+				$data['content'] = 'content/bayi/edit_bayi';
+				$data['title'] = "Edit Data Bayi - Posyandu";
+				$data['bayi'] = $this->m_model->getBayi($id); 
+				$this->load->view('home', $data);
+			}
 		}
 
 		
