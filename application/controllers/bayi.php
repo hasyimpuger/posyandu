@@ -6,12 +6,12 @@ class Bayi extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_model');
+		$this->load->model('M_model');
 	}
 
 	public function index()
 	{
-		$data['bayi'] = $this->m_model->showBayi();
+		$data['bayi'] = $this->M_model->showBayi();
 		$data['content'] = 'content/bayi/bayi';
 		$data['title'] = "Data Balita/Bayi - Posyandu";
 		$this->load->view('home', $data);
@@ -49,7 +49,7 @@ class Bayi extends CI_Controller {
 					'nama_ibu' => $ibu,
 					'status' => $status
 				);
-				$this->m_model->insertBayi($obj);
+				$this->M_model->insertBayi($obj);
 				$this->session->set_flashdata('alert',"Berhasil Disimpan");
 				redirect('Bayi','refresh');
 			}
@@ -76,7 +76,7 @@ class Bayi extends CI_Controller {
 			{
 				$data['content'] = 'content/bayi/edit_bayi';
 				$data['title'] = "Edit Data Bayi - Posyandu";
-				$data['bayi'] = $this->m_model->getBayi($id); 
+				$data['bayi'] = $this->M_model->getBayi($id); 
 				$this->load->view('home', $data);
 			} 
 			else
@@ -96,7 +96,7 @@ class Bayi extends CI_Controller {
 					'status' => $status
 				);
 				$this->db->where('id_bayi', $id);
-				$this->m_model->updateBayi($obj);
+				$this->M_model->updateBayi($obj);
 				$this->session->set_flashdata('alert',"Berhasil Diedit");
 				redirect('Bayi');
 			}
@@ -105,14 +105,14 @@ class Bayi extends CI_Controller {
 		{
 			$data['content'] = 'content/bayi/edit_bayi';
 			$data['title'] = "Edit Data Bayi - Posyandu";
-			$data['bayi'] = $this->m_model->getBayi($id); 
+			$data['bayi'] = $this->M_model->getBayi($id); 
 			$this->load->view('home', $data);
 		}
 	}
 
 	public function hapus_data_bayi($id)
 	{
-		$this->m_model->deleteBayi($id);
+		$this->M_model->deleteBayi($id);
 		$this->session->set_flashdata('alert',"Berhasil Dihapus");
 		redirect('Bayi');
 	}

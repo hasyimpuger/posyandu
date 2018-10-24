@@ -3,7 +3,7 @@
 		<h3 class="panel-title">Dashboard</h3>
 		<p class="panel-subtitle"><?php echo date('d-M-y h:i a') ?></p>
 	</div>
-	<div class="panel-body">
+	<!-- <div class="panel-body">
 		<div class="row">
 			<div class="col-md-3">
 				<div class="metric">
@@ -42,5 +42,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>

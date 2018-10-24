@@ -27,6 +27,20 @@ class M_model extends CI_Model {
 	{
 		return $this->db->delete('tb_bayi', array('id_bayi' => $id));
 	}
+
+
+	// Penimbangan
+	public function showPenimbangan($id) {
+		return $this->db->get_where('tb_penimbangan', array('id_bayi' => $id));
+	}
+
+	public function insertPenimbangan($data) {
+		return $this->db->insert('tb_penimbangan', $data);
+	}
+
+	public function updatePenimbangan($data) {
+		return $this->db->update('tb_penimbangan', $data);
+	}
 }
 
 /* End of file m_model.php */

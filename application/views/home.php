@@ -62,10 +62,9 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="<?php echo site_url('dashboard') ?>" class="<?php if($this->uri->segment('1') == "dashboard"){echo "active";} ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="<?php echo site_url('bayi') ?>" class="<?php if($this->uri->segment('1') == "bayi"){echo "active";} ?>"><i class="fa fa-user-md"></i> <span>Data Balita/Bayi</span></a></li>
-						<li><a href="charts.html" class=""><i class="fa fa-balance-scale"></i> <span>Penimbangan</span></a></li>
-						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Imunisasi</span></a></li>
+						<li><a href="<?php echo site_url('Dashboard') ?>" class="<?php if($this->uri->segment('1') == "Dashboard"){echo "active";} ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="<?php echo site_url('Bayi') ?>" class="<?php if($this->uri->segment('1') == "Bayi"){echo "active";} ?>"><i class="fa fa-user-md"></i> <span>Data Balita/Bayi</span></a></li>
+						<li><a href="<?php echo site_url('Penimbangan') ?>" class="<?php if($this->uri->segment('1') == "Penimbangan"){echo "active";} ?>"><span>Penimbangan dan Imunisasi</span></a></li>
 						<li><a href="" class=""><i class="fa fa-file-pdf-o"></i><span>Laporan Penimbangan</span></a></li>
 					</ul>
 				</nav>
@@ -110,6 +109,8 @@
 
 		$(document).ready(function(){
 			$('#mytable').DataTable();
+
+
 		});
 	</script>
 </body>
