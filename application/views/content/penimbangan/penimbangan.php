@@ -3,7 +3,7 @@
 		<h3 class="panel-title">Penimbangan</h3>
 	</div>
 	<div class="panel-body">
-		<table class="table table-bordered table-responsive">
+		<table class="table table-bordered table-responsive" id="mytable">
 			<thead>
 				<tr>
 					<th>Nama Bayi</th>

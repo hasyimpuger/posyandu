@@ -39,9 +39,11 @@
 	</div>
 	<div class="panel-body">
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myAdd">Tambah Data Penimbangan</button>
+		<a href="" class="btn btn-sm btn-warning">Grafik Berat Badan</a>
+		<a href="" class="btn btn-sm btn-success">Grafik Tinggi Badan</a>
 		<br>
 		<br>
-		<table class="table table-bordered table-responsive">
+		<table class="table table-bordered table-responsive" id="mytable">
 			<thead>
 				<tr>
 					<th>Tanggal</th>
@@ -73,11 +75,17 @@
 												<input type="hidden" name="id" value="<?php echo $p->id_bayi ?>">
 												<div class="form-group">
 													<label for="berat">Berat Badan</label>
-													<input type="text" name="berat" class="form-control" value="<?php echo $p->berat_bayi ?>">
+													<div class="input-group">
+														<input type="text" name="berat" class="form-control" value="<?php echo $p->berat_bayi ?>">
+														<span class="input-group-addon">Kg</span>
+													</div>
 												</div>        	
 												<div class="form-group">
 													<label for="tinggi">Tinggi Badan</label>
-													<input type="text" name="tinggi" class="form-control" value="<?php echo $p->tinggi_bayi ?>">
+													<div class="input-group">
+														<input type="text" name="tinggi" class="form-control" value="<?php echo $p->tinggi_bayi ?>">
+														<span class="input-group-addon">CM</span>
+													</div>
 												</div>  
 
 											</div>
@@ -115,11 +123,17 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label for="berat">Berat Badan</label>
-					<input type="text" name="berat" class="form-control">
+					<div class="input-group">
+						<input type="text" name="berat" class="form-control">
+						<span class="input-group-addon">Kg</span>
+					</div>
 				</div>        	
 				<div class="form-group">
 					<label for="tinggi">Tinggi Badan</label>
-					<input type="text" name="tinggi" class="form-control">
+					<div class="input-group">
+						<input type="text" name="tinggi" class="form-control">
+						<span class="input-group-addon">CM</span>
+					</div>
 				</div>  
 
 			</div>
