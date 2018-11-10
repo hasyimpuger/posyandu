@@ -24,6 +24,8 @@
 	<!-- PLUGIN -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/plugin/flatpickr/dist/flatpickr.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/plugin/datatables/datatables.min.css">
+	<!-- GOOGLE CHARTS -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -41,10 +43,8 @@
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
-								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
 								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
 								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
 							</ul>
@@ -62,10 +62,10 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="<?php echo site_url('Dashboard') ?>" class="<?php if($this->uri->segment('1') == "Dashboard"){echo "active";} ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="<?php echo site_url('Bayi') ?>" class="<?php if($this->uri->segment('1') == "Bayi"){echo "active";} ?>"><i class="fa fa-user-md"></i> <span>Data Balita/Bayi</span></a></li>
+						<li><a href="<?php echo site_url('Dashboard') ?>" class="<?php if($this->uri->segment('1') == "Dashboard"){echo "active";} ?>"> <span>Beranda</span></a></li>
+						<li><a href="<?php echo site_url('Bayi') ?>" class="<?php if($this->uri->segment('1') == "Bayi"){echo "active";} ?>"> <span>Data Balita/Bayi</span></a></li>
 						<li><a href="<?php echo site_url('Penimbangan') ?>" class="<?php if($this->uri->segment('1') == "Penimbangan"){echo "active";} ?>"><span>Penimbangan dan Imunisasi</span></a></li>
-						<li><a href="" class=""><i class="fa fa-file-pdf-o"></i><span>Laporan Penimbangan</span></a></li>
+						<li><a href="<?php echo site_url('Laporan/laporan_bulanan') ?>" class="<?php if($this->uri->segment('1') == "Laporan"){echo "active";} ?>"><span>Laporan Bulanan</span></a></li>
 					</ul>
 				</nav>
 			</div>

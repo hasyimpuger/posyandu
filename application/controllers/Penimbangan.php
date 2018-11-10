@@ -56,8 +56,49 @@ class Penimbangan extends CI_Controller {
 		}
 	}
 
+	public function penimbangan_grafik($id) {
+		$data['content'] = 'content/penimbangan/grafik_berat';
+		$res = $this->M_model->getBayi($id);
+		$data['title'] = "Data Penimbangan ".$res->nama_bayi." - Posyandu";
+		$data['bayi'] = $this->M_model->getBayi($id);
+		$data['penimbangan'] = $this->M_model->showPenimbangan($id)->result_object();
+		$this->load->view('home', $data);
+	}
 	
+	public function imunisasi_bayi($id) {
+		if($this->input->post('simpan')) {
+			$imunisasi = $this->input->post('imunisasi');
+			$tanggal = date('Y-m-d');
+			$obj = array(
+				'id_bayi' => $id,
+				'tanggal' => $tanggal,
+				'nama_imunisasi' => $imunisasi,
+			);
+			$this->M_model->insertImunisasi($obj);
+			redirect('Penimbangan/imunisasi_bayi/'.$id,'refresh');
+		} else {
+			$data['content'] = "content/imunisasi/imunisasi";
+			$res = $this->M_model->getBayi($id);
+			$data['title'] = "Imunisasi ".$res->nama_bayi." - Posyandu";
+			$data['bayi'] = $this->M_model->getBayi($id);
+			$data['imunisasi'] = $this->M_model->showImunisasi($id)->result_object();
+			$this->load->view('home', $data);
+		}
+	}
 
+	public function edit_imunisasi($id){
+		if($this->input->post('edit')) {
+			$id_bayi = $this->input->post("id");
+			$jimunisasi = $this->input->post('jimunisasi');
+			$obj = array(
+				"nama_imunisasi" => $jimunisasi
+			);
+			$this->db->where('id_imunisasi', $id);
+			$this->M_model->updateImunisasi($obj);
+			redirect('Penimbangan/imunisasi_bayi/'.$id_bayi,'refresh');
+		}
+	}
+	
 }
 
 /* End of file Penimbangan.php */

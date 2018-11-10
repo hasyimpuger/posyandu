@@ -39,13 +39,15 @@
 	</div>
 	<div class="panel-body">
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myAdd">Tambah Data Penimbangan</button>
-		<a href="" class="btn btn-sm btn-warning">Grafik Berat Badan</a>
+		<a href="<?php echo base_url('penimbangan/penimbangan_grafik/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-warning">Grafik Berat Badan</a>
 		<a href="" class="btn btn-sm btn-success">Grafik Tinggi Badan</a>
+		<a href="<?php echo base_url('Laporan/laporan_bayi/'.$bayi->id_bayi) ?>" target="_blank" class="btn btn-sm btn-danger">Laporan</a>
 		<br>
 		<br>
 		<table class="table table-bordered table-responsive" id="mytable">
 			<thead>
 				<tr>
+					<th>Bulan Ke</th>
 					<th>Tanggal</th>
 					<th>Berat Bayi</th>
 					<th>Tinggi Bayi</th>
@@ -53,8 +55,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($penimbangan as $p): ?>
+				<?php 
+				$no = 0;
+				foreach($penimbangan as $p): ?>
 					<tr>
+						<td><?php echo "Bulan Ke-".$no; ?></td>
 						<td><?php echo $p->tanggal; ?></td>
 						<td><?php echo $p->berat_bayi." kg"; ?></td>
 						<td><?php echo $p->tinggi_bayi." cm" ?></td>
@@ -99,11 +104,12 @@
 
 								</div>
 							</div>
-
-							<a href="<?php echo base_url('') ?>" class="btn btn-sm btn-danger">Hapus</a>
 						</td>
 					</tr>
-				<?php endforeach; ?>
+				<?php 
+				$no++;
+				endforeach;
+				?>
 			</tbody>
 		</table>
 	</div>
@@ -127,7 +133,8 @@
 						<input type="text" name="berat" class="form-control">
 						<span class="input-group-addon">Kg</span>
 					</div>
-				</div>        	
+				</div> 
+				<br>      	
 				<div class="form-group">
 					<label for="tinggi">Tinggi Badan</label>
 					<div class="input-group">

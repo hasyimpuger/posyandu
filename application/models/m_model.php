@@ -8,6 +8,11 @@ class M_model extends CI_Model {
 		return $this->db->get('tb_bayi')->result_object();
 	}
 
+	public function showBayi2($id)
+	{
+		return $this->db->get_where('tb_bayi', array('id_bayi' => $id))->result_object();
+	}
+
 	public function insertBayi($data)
 	{
 		return $this->db->insert("tb_bayi", $data);
@@ -28,6 +33,10 @@ class M_model extends CI_Model {
 		return $this->db->delete('tb_bayi', array('id_bayi' => $id));
 	}
 
+	public function countBayi()
+	{
+		return $this->db->count_all('tb_bayi');
+	}
 
 	// Penimbangan
 	public function showPenimbangan($id) {
@@ -40,6 +49,23 @@ class M_model extends CI_Model {
 
 	public function updatePenimbangan($data) {
 		return $this->db->update('tb_penimbangan', $data);
+	}
+
+	public function LaporanBulanan($data) {
+		return $this->db->get_where('tb_penimbangan', array('tanggal' => $data));
+	}
+
+	// Imunisasi
+	public function showImunisasi($id) {
+		return $this->db->get_where('tb_imunisasi', array('id_bayi' => $id));
+	}
+
+	public function insertImunisasi($data) {
+		return $this->db->insert('tb_imunisasi', $data);
+	}
+
+	public function updateImunisasi($data) {
+		return $this->db->update('tb_imunisasi', $data);
 	}
 }
 

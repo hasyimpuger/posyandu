@@ -6,13 +6,14 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_model');
+		$this->load->model('M_model');
 	}
 
 	public function index()
 	{
 		$data['content'] = 'content/dashboard';
 		$data['title'] = "Dashboard - Posyandu";
+		$data['count'] = $this->M_model->countBayi();
 		$this->load->view('home', $data);
 	}
 }
