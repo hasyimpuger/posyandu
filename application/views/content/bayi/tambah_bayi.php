@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		<hr>
-		<?php echo form_open('bayi/tambah_data_bayi'); ?>
+		<?php echo form_open_multipart('bayi/tambah_data_bayi'); ?>
 			<div class="form-group">
 				<label for="nama">Nama Bayi</label>
 				<input type="text" name="nama" class="form-control" value="<?php echo set_value('nama'); ?>">
@@ -29,6 +29,11 @@
 				<label for="ibu">Nama Ibu</label>
 				<input type="text" name="ibu" class="form-control" value="<?php echo set_value('ibu'); ?>">
 				<div style="color: red"><?php echo form_error('ibu'); ?></div>
+			</div>
+			<div class="form-group">
+				<label for="foto">Foto Bayi</label>
+				<input type="file" name="foto">
+				<div style="color: red"><?php echo form_error('foto'); ?></div>
 			</div>
 			<input type="submit" name="simpan" class="btn btn-md btn-info" value="Simpan">
 		<?php echo form_close(); ?>

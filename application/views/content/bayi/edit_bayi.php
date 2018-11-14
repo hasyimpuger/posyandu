@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		<hr>
-		<?php echo form_open('bayi/edit_data_bayi/'.$bayi->id_bayi); ?>
+		<?php echo form_open_multipart('Bayi/edit_data_bayi/'.$bayi->id_bayi); ?>
 			<div class="form-group">
 				<label for="nama">Nama Bayi</label>
 				<input type="text" name="nama" class="form-control" value="<?php echo $bayi->nama_bayi; ?>">
@@ -31,9 +31,10 @@
 				<div style="color: red"><?php echo form_error('ibu'); ?></div>
 			</div>
 			<div class="form-group">
-				<label for="status">Status</label><br>
-				<label class="radio-inline"><input type="radio" name="status" value="Aktif"<?php if($bayi->status == "Aktif"){echo "checked";} ?>/> Aktif</label>&nbsp;&nbsp;
-				<label class="radio-inline"><input type="radio" name="status" value="Tidak Aktif"<?php if($bayi->status == "Tidak Aktif"){echo "checked";} ?>/>	Tidak Aktif</label>
+				<label for="foto">Foto Bayi</label><br>
+				<img src="<?php echo base_url('assets/foto/').$bayi->foto_bayi; ?>" alt="" class="img-thumbnail" width="100" height="160"><br>
+				<input type="file" name="foto" class="form-control">
+				<div style="color: red"><?php echo form_error('foto'); ?></div>
 			</div>
 			<input type="submit" name="simpan" class="btn btn-md btn-info" value="Simpan">
 		<?php echo form_close(); ?>

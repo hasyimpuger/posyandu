@@ -40,7 +40,7 @@
 	<div class="panel-body">
 		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myAdd">Tambah Data Penimbangan</button>
 		<a href="<?php echo base_url('penimbangan/penimbangan_grafik/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-warning">Grafik Berat Badan</a>
-		<a href="" class="btn btn-sm btn-success">Grafik Tinggi Badan</a>
+		<a href="<?php echo base_url('penimbangan/grafik_tinggibadan/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-success">Grafik Tinggi Badan</a>
 		<a href="<?php echo base_url('Laporan/laporan_bayi/'.$bayi->id_bayi) ?>" target="_blank" class="btn btn-sm btn-danger">Laporan</a>
 		<br>
 		<br>

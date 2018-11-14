@@ -35,23 +35,33 @@ class Bayi extends CI_Controller {
 			}
 			else
 			{
-				$nama = $this->input->post('nama');
-				$tl = $this->input->post('tanggal');
-				$jkelamin = $this->input->post('jkelamin');
-				$ayah = $this->input->post('ayah');
-				$ibu = $this->input->post('ibu');
-				$status = "Aktif";
-				$obj = array(
-					'nama_bayi' => $nama,
-					'tanggal_lahir' => $tl,
-					'jenis_kelamin' => $jkelamin,
-					'nama_ayah' => $ayah,
-					'nama_ibu' => $ibu,
-					'status' => $status
-				);
-				$this->M_model->insertBayi($obj);
-				$this->session->set_flashdata('alert',"Berhasil Disimpan");
-				redirect('Bayi','refresh');
+				$config['upload_path'] = './assets/foto';
+				$config['allowed_types'] = 'jpg|png';
+				$config['max_size'] = '4096';
+
+				$this->load->library('upload', $config);
+				if($this->upload->do_upload('foto'))
+				{
+					$file = array('upload_data' => $this->upload->data());
+
+					$nama = $this->input->post('nama');
+					$tl = $this->input->post('tanggal');
+					$jkelamin = $this->input->post('jkelamin');
+					$ayah = $this->input->post('ayah');
+					$ibu = $this->input->post('ibu');
+					$image = $file['upload_data']['file_name'];
+					$obj = array(
+						'nama_bayi' => $nama,
+						'tanggal_lahir' => $tl,
+						'jenis_kelamin' => $jkelamin,
+						'nama_ayah' => $ayah,
+						'nama_ibu' => $ibu,
+						'foto_bayi' => $image,
+					);
+					$this->M_model->insertBayi($obj);
+					$this->session->set_flashdata('alert',"Berhasil Disimpan");
+					redirect('Bayi','refresh');
+				}
 			}
 		}
 		else 
@@ -66,39 +76,90 @@ class Bayi extends CI_Controller {
 	{
 		if($this->input->post('simpan'))
 		{
-			$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
-			$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required|alpha_numeric_spaces');
-			$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'trim|required');
-			$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
-			$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
-			$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
-			if($this->form_validation->run() == FALSE)
+			if(empty($_FILES['foto']['name'])) 
 			{
-				$data['content'] = 'content/bayi/edit_bayi';
-				$data['title'] = "Edit Data Bayi - Posyandu";
-				$data['bayi'] = $this->M_model->getBayi($id); 
-				$this->load->view('home', $data);
-			} 
+				$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
+				$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'trim|required');
+				$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
+				$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
+				if($this->form_validation->run() == FALSE)
+				{
+					$data['content'] = 'content/bayi/edit_bayi';
+					$data['title'] = "Edit Data Bayi - Posyandu";
+					$data['bayi'] = $this->M_model->getBayi($id); 
+					$this->load->view('home', $data);
+				} 
+				else
+				{
+					$nama = $this->input->post('nama');
+					$tl = $this->input->post('tanggal');
+					$jkelamin = $this->input->post('jkelamin');
+					$ayah = $this->input->post('ayah');
+					$ibu = $this->input->post('ibu');
+					$obj3 = array(
+						'nama_bayi' => $nama,
+						'tanggal_lahir' => $tl,
+						'jenis_kelamin' => $jkelamin,
+						'nama_ayah' => $ayah,
+						'nama_ibu' => $ibu,
+					);
+					$this->db->where('id_bayi', $id);
+					$this->M_model->updateBayi($obj3);
+					$this->session->set_flashdata('alert',"Berhasil Diedit");
+					redirect('Bayi');
+				}
+			}
 			else
 			{
-				$nama = $this->input->post('nama');
-				$tl = $this->input->post('tanggal');
-				$jkelamin = $this->input->post('jkelamin');
-				$ayah = $this->input->post('ayah');
-				$ibu = $this->input->post('ibu');
-				$status = $this->input->post('status');
-				$obj = array(
-					'nama_bayi' => $nama,
-					'tanggal_lahir' => $tl,
-					'jenis_kelamin' => $jkelamin,
-					'nama_ayah' => $ayah,
-					'nama_ibu' => $ibu,
-					'status' => $status
-				);
-				$this->db->where('id_bayi', $id);
-				$this->M_model->updateBayi($obj);
-				$this->session->set_flashdata('alert',"Berhasil Diedit");
-				redirect('Bayi');
+				$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
+				$this->form_validation->set_rules('nama', 'Nama Bayi', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('tanggal', 'Tanggal Lahir', 'trim|required');
+				$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
+				$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
+				if($this->form_validation->run() == FALSE)
+				{
+					$data['content'] = 'content/bayi/edit_bayi';
+					$data['title'] = "Edit Data Bayi - Posyandu";
+					$data['bayi'] = $this->M_model->getBayi($id); 
+					$this->load->view('home', $data);
+				}
+				else
+				{
+					$obj2 = $this->M_model->getBayi($id);
+					unlink('./assets/foto/'.$obj2->foto_bayi);
+
+					$config['upload_path'] = './assets/foto';
+					$config['allowed_types'] = 'jpg|png';
+					$config['max_size'] = '4096';
+
+					$this->load->library('upload', $config);
+					if($this->upload->do_upload('foto'))
+					{
+						$file = array('upload_data' => $this->upload->data());
+
+						$nama = $this->input->post('nama');
+						$tl = $this->input->post('tanggal');
+						$jkelamin = $this->input->post('jkelamin');
+						$ayah = $this->input->post('ayah');
+						$ibu = $this->input->post('ibu');
+						$image = $file['upload_data']['file_name'];
+						$obj = array(
+							'nama_bayi' => $nama,
+							'tanggal_lahir' => $tl,
+							'jenis_kelamin' => $jkelamin,
+							'nama_ayah' => $ayah,
+							'nama_ibu' => $ibu,
+							'foto_bayi' => $image,
+						);
+						$this->db->where('id_bayi', $id);
+						$this->M_model->updateBayi($obj);
+						$this->session->set_flashdata('alert',"Berhasil Diedit");
+						redirect('Bayi','refresh');
+					}
+				}
 			}
 		} 
 		else
@@ -112,6 +173,9 @@ class Bayi extends CI_Controller {
 
 	public function hapus_data_bayi($id)
 	{
+		$obj2 = $this->M_model->getBayi($id);
+		unlink('./assets/foto/'.$obj2->foto_bayi);
+
 		$this->M_model->deleteBayi($id);
 		$this->session->set_flashdata('alert',"Berhasil Dihapus");
 		redirect('Bayi');

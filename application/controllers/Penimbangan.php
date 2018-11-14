@@ -64,6 +64,15 @@ class Penimbangan extends CI_Controller {
 		$data['penimbangan'] = $this->M_model->showPenimbangan($id)->result_object();
 		$this->load->view('home', $data);
 	}
+
+	public function grafik_tinggibadan($id) {
+		$data['content'] = 'content/penimbangan/grafik_tinggi';
+		$res = $this->M_model->getBayi($id);
+		$data['title'] = "Data Penimbangan ".$res->nama_bayi." - Posyandu";
+		$data['bayi'] = $this->M_model->getBayi($id);
+		$data['penimbangan'] = $this->M_model->showPenimbangan($id)->result_object();
+		$this->load->view('home', $data);
+	}
 	
 	public function imunisasi_bayi($id) {
 		if($this->input->post('simpan')) {

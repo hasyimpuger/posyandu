@@ -65,7 +65,7 @@
 						<li><a href="<?php echo site_url('Dashboard') ?>" class="<?php if($this->uri->segment('1') == "Dashboard"){echo "active";} ?>"> <span>Beranda</span></a></li>
 						<li><a href="<?php echo site_url('Bayi') ?>" class="<?php if($this->uri->segment('1') == "Bayi"){echo "active";} ?>"> <span>Data Balita/Bayi</span></a></li>
 						<li><a href="<?php echo site_url('Penimbangan') ?>" class="<?php if($this->uri->segment('1') == "Penimbangan"){echo "active";} ?>"><span>Penimbangan dan Imunisasi</span></a></li>
-						<li><a href="<?php echo site_url('Laporan/laporan_bulanan') ?>" class="<?php if($this->uri->segment('1') == "Laporan"){echo "active";} ?>"><span>Laporan Bulanan</span></a></li>
+						<li><a href="<?php echo site_url('Laporan/Laporanbulanan') ?>" class="<?php if($this->uri->segment('1') == "Laporan"){echo "active";} ?>"><span>Laporan Bulanan</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -109,8 +109,6 @@
 
 		$(document).ready(function(){
 			$('#mytable').DataTable();
-
-
 		});
 	</script>
 </body>

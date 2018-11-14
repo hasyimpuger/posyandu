@@ -16,14 +16,3 @@
 		<?php echo form_close(); ?>
 	</div>
 </div>
-
-<div class="row">
-	$count = 1;
-	<?php while ($count <= 9) {
-	    ?>
-	    <div class="col-md-4">
-	    	<?php echo $count; ?>
-	    </div>
-	    <?php
-	} ?>
-</div>

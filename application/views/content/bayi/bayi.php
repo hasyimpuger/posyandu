@@ -59,8 +59,8 @@
 														<td><?php echo $b->nama_ibu; ?></td>
 													</tr>
 													<tr>
-														<td><label>Status</label></td>
-														<td><?php echo $b->status; ?></td>
+														<td><label>Foto</label></td>
+														<td><img src="<?php echo base_url('assets/foto/').$b->foto_bayi; ?>" width="100" height="160" class="img-thumbnail"></td>
 													</tr>
 												</table>
 											</div>

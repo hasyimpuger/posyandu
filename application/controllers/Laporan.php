@@ -49,8 +49,7 @@ class Laporan extends CI_Controller {
 		$pdf->Output();
 	}
 
-
-	public function laporan_bulanan() {
+	public function Laporanbulanan() {
 		$data['content'] = 'content/laporan/laporan';
 		$data['title'] = "Laporan Bulanan - Posyandu";
 		$this->load->view('home', $data);
