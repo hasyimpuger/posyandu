@@ -72,6 +72,15 @@ class Bayi extends CI_Controller {
 		}
 	}
 
+	public function detail_bayi($id)
+	{
+		$res = $this->M_model->getBayi($id);
+		$data['content'] = 'content/bayi/detail_bayi';
+		$data['title'] = "Detail ".$res->nama_bayi." - Posyandu";
+		$data['bayi'] = $this->M_model->getBayi($id);
+		$this->load->view('home', $data);
+	}
+
 	public function edit_data_bayi($id)
 	{
 		if($this->input->post('simpan'))
