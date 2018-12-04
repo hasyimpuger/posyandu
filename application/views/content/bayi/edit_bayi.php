@@ -31,6 +31,11 @@
 				<div style="color: red"><?php echo form_error('ibu'); ?></div>
 			</div>
 			<div class="form-group">
+				<label for="ibu">NIK Ibu</label>
+				<input type="text" name="nik" class="form-control" value="<?php echo $bayi->NIK_ibu; ?>">
+				<div style="color: red"><?php echo form_error('nik'); ?></div>
+			</div>
+			<div class="form-group">
 				<label for="foto">Foto Bayi</label><br>
 				<img src="<?php echo base_url('assets/foto/').$bayi->foto_bayi; ?>" alt="" class="img-thumbnail" width="100" height="160"><br>
 				<input type="file" name="foto" class="form-control">

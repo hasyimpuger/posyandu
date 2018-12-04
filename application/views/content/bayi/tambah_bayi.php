@@ -31,11 +31,34 @@
 				<div style="color: red"><?php echo form_error('ibu'); ?></div>
 			</div>
 			<div class="form-group">
+				<label for="ibu">NIK Ibu</label>
+				<input type="text" name="nik" class="form-control" value="<?php echo set_value('nik'); ?>">
+				<div style="color: red"><?php echo form_error('nik'); ?></div>
+			</div>
+			<div class="form-group">
 				<label for="foto">Foto Bayi</label>
-				<input type="file" name="foto">
+				<img src="#" alt="" id="gambar_ngodin" width="100" height="160" class="img-thumbnail">
+				<input type="file" name="foto" id="preview_foto">
 				<div style="color: red"><?php echo form_error('foto'); ?></div>
 			</div>
 			<input type="submit" name="simpan" class="btn btn-md btn-info" value="Simpan">
 		<?php echo form_close(); ?>
 	</div>
 </div>
+<script>
+function bacaGambar(input) {
+	if(input.files && input.files[0]) {
+		var reader = new FileReader();
+
+		reader.onload = function(e) {
+			('#gambar_ngodin').attr('src', e.target.result);
+		}
+
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+
+$("#preview_foto").change(function(){
+	bacaGambar(this);
+});
+</script>

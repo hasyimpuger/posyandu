@@ -25,9 +25,13 @@
 			<label for="">Nama Ibu</label>
 			<input type="text" value="<?php echo $bayi->nama_ibu ?>" class="form-control" readonly>
 		</div>
+		<div class="form-group">
+			<label for="">NIK Ibu</label>
+			<input type="text" value="<?php echo $bayi->NIK_ibu ?>" class="form-control" readonly>
+		</div>
 		<br>
-		<a href="" class="btn btn-sm btn-success">Tabel Berat dan Tinggi Badan</a>
-		<a href="" class="btn btn-sm btn-info">Grafik Berat Badan</a>
-		<a href="" class="btn btn-sm btn-info">Grafik Tinggi Badan</a>		
+		<a href="<?php echo site_url('Penimbangan/penimbangan_bayi/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-success">Tabel Berat dan Tinggi Badan</a>
+		<a href="<?php echo base_url('penimbangan/penimbangan_grafik/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-info">Grafik Berat Badan</a>
+		<a href="<?php echo base_url('penimbangan/grafik_tinggibadan/'.$bayi->id_bayi) ?>" class="btn btn-sm btn-info">Grafik Tinggi Badan</a>		
 	</div>
 </div>

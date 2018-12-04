@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Bayi extends CI_Controller {
@@ -27,6 +28,7 @@ class Bayi extends CI_Controller {
 			$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
 			$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
 			$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
+			$this->form_validation->set_rules('nik', 'NIK ibu', 'trim|required|numeric');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$data['content'] = 'content/bayi/tambah_bayi';
@@ -49,6 +51,7 @@ class Bayi extends CI_Controller {
 					$jkelamin = $this->input->post('jkelamin');
 					$ayah = $this->input->post('ayah');
 					$ibu = $this->input->post('ibu');
+					$nik = $this->input->post('nik');
 					$image = $file['upload_data']['file_name'];
 					$obj = array(
 						'nama_bayi' => $nama,
@@ -56,6 +59,7 @@ class Bayi extends CI_Controller {
 						'jenis_kelamin' => $jkelamin,
 						'nama_ayah' => $ayah,
 						'nama_ibu' => $ibu,
+						'NIK_ibu' => $nik,
 						'foto_bayi' => $image,
 					);
 					$this->M_model->insertBayi($obj);
@@ -107,12 +111,14 @@ class Bayi extends CI_Controller {
 					$jkelamin = $this->input->post('jkelamin');
 					$ayah = $this->input->post('ayah');
 					$ibu = $this->input->post('ibu');
+					$nik = $this->input->post('nik');
 					$obj3 = array(
 						'nama_bayi' => $nama,
 						'tanggal_lahir' => $tl,
 						'jenis_kelamin' => $jkelamin,
 						'nama_ayah' => $ayah,
 						'nama_ibu' => $ibu,
+						'NIK_ibu' => $nik
 					);
 					$this->db->where('id_bayi', $id);
 					$this->M_model->updateBayi($obj3);
@@ -128,6 +134,7 @@ class Bayi extends CI_Controller {
 				$this->form_validation->set_rules('jkelamin', 'Jenis Kelamin', 'trim|required');
 				$this->form_validation->set_rules('ayah', 'Nama Ayah', 'trim|required|alpha_numeric_spaces');
 				$this->form_validation->set_rules('ibu', 'Nama ibu', 'trim|required|alpha_numeric_spaces');
+				$this->form_validation->set_rules('nik', 'NIK ibu', 'trim|required|numeric');
 				if($this->form_validation->run() == FALSE)
 				{
 					$data['content'] = 'content/bayi/edit_bayi';
@@ -154,6 +161,7 @@ class Bayi extends CI_Controller {
 						$jkelamin = $this->input->post('jkelamin');
 						$ayah = $this->input->post('ayah');
 						$ibu = $this->input->post('ibu');
+						$nik = $this->input->post('nik');
 						$image = $file['upload_data']['file_name'];
 						$obj = array(
 							'nama_bayi' => $nama,
@@ -161,6 +169,7 @@ class Bayi extends CI_Controller {
 							'jenis_kelamin' => $jkelamin,
 							'nama_ayah' => $ayah,
 							'nama_ibu' => $ibu,
+							'NIK_ibu' => $nik,
 							'foto_bayi' => $image,
 						);
 						$this->db->where('id_bayi', $id);

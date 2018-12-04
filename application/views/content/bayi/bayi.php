@@ -14,16 +14,18 @@
 		<table class="table table-responsive table-striped table-hover table-bordered" id="mytable">
 			<thead>
 				<tr>
+					<th>NIK Ibu</th>
 					<th>Nama Balita/Bayi</th>
-					<th>Nama Ayah</th>
+					<th>Nama Ibu</th>
 					<th width="25%">Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php foreach($bayi as $b): ?>
 					<tr>
+						<td><?php echo $b->NIK_ibu ?></td>
 						<td><?php echo $b->nama_bayi ?></td>
-						<td><?php echo $b->nama_ayah ?></td>
+						<td><?php echo $b->nama_ibu ?></td>
 						<td>
 							<div class="btn-group">
 								<a href="<?php echo base_url('bayi/detail_bayi/').$b->id_bayi ?>" class="btn btn-sm btn-info">Detail</a>

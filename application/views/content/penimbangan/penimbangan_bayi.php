@@ -6,6 +6,8 @@
 		</div>
 	</div>
 	<div class="panel-body">
+		<img src="<?php echo base_url('assets/foto/').$bayi->foto_bayi; ?>" alt="" width="300" height="450" class="img-thumbnail">
+		<br><br>
 		<table class="table table-bordered">
 			<tr>
 				<td><label>Nama Bayi</label></td>
