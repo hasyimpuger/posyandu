@@ -10,6 +10,10 @@ class Laporan extends CI_Controller {
 	}
 
 	public function index() {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 	// echo "<title>Laporan</title>";
 		$pdf = new FPDF('l','mm','A5');
 		$pdf->AddPage();
@@ -19,6 +23,10 @@ class Laporan extends CI_Controller {
 	}
 
 	public function laporan_bayi($id) {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$res = $this->M_model->getBayi($id);
 		$pdf = new FPDF('P','mm','A4');
 		$pdf->AddPage();
@@ -50,12 +58,20 @@ class Laporan extends CI_Controller {
 	}
 
 	public function Laporanbulanan() {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$data['content'] = 'content/laporan/laporan';
 		$data['title'] = "Laporan Bulanan - Posyandu";
 		$this->load->view('home', $data);
 	}
 
 	public function laporan_Bulanann() {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+		
 		if($this->input->post('cari')) {
 			$tanggal = $this->input->post('tanggal');
 			$pdf = new FPDF('P','mm','A4');

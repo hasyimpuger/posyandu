@@ -11,6 +11,10 @@ class Penimbangan extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$data['content'] = "content/penimbangan/penimbangan";
 		$data['title'] = "Penimbangan - Posyandu";
 		$data['bayi'] = $this->M_model->showBayi();
@@ -19,6 +23,10 @@ class Penimbangan extends CI_Controller {
 
 	public function penimbangan_bayi($id)
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		if($this->input->post('simpan')) {
 			$berat = $this->input->post('berat');
 			$tinggi = $this->input->post('tinggi');
@@ -42,6 +50,10 @@ class Penimbangan extends CI_Controller {
 	}
 
 	public function edit_penimbangan($id) {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		if($this->input->post('edit')) {
 			$id_bayi = $this->input->post("id");
 			$berat = $this->input->post('berat');
@@ -57,6 +69,10 @@ class Penimbangan extends CI_Controller {
 	}
 
 	public function penimbangan_grafik($id) {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$data['content'] = 'content/penimbangan/grafik_berat';
 		$res = $this->M_model->getBayi($id);
 		$data['title'] = "Data Penimbangan ".$res->nama_bayi." - Posyandu";
@@ -66,6 +82,10 @@ class Penimbangan extends CI_Controller {
 	}
 
 	public function grafik_tinggibadan($id) {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$data['content'] = 'content/penimbangan/grafik_tinggi';
 		$res = $this->M_model->getBayi($id);
 		$data['title'] = "Data Penimbangan ".$res->nama_bayi." - Posyandu";
@@ -75,6 +95,10 @@ class Penimbangan extends CI_Controller {
 	}
 	
 	public function imunisasi_bayi($id) {
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		if($this->input->post('simpan')) {
 			$imunisasi = $this->input->post('imunisasi');
 			$tanggal = date('Y-m-d');
@@ -96,6 +120,10 @@ class Penimbangan extends CI_Controller {
 	}
 
 	public function edit_imunisasi($id){
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+		
 		if($this->input->post('edit')) {
 			$id_bayi = $this->input->post("id");
 			$jimunisasi = $this->input->post('jimunisasi');

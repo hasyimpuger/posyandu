@@ -12,6 +12,10 @@ class Bayi extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$data['bayi'] = $this->M_model->showBayi();
 		$data['content'] = 'content/bayi/bayi';
 		$data['title'] = "Data Balita/Bayi - Posyandu";
@@ -20,6 +24,10 @@ class Bayi extends CI_Controller {
 
 	public function tambah_data_bayi()
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		if($this->input->post('simpan')) 
 		{
 			$this->form_validation->set_message('required', 'Tidak Boleh Kosong');
@@ -78,6 +86,10 @@ class Bayi extends CI_Controller {
 
 	public function detail_bayi($id)
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		$res = $this->M_model->getBayi($id);
 		$data['content'] = 'content/bayi/detail_bayi';
 		$data['title'] = "Detail ".$res->nama_bayi." - Posyandu";
@@ -87,6 +99,10 @@ class Bayi extends CI_Controller {
 
 	public function edit_data_bayi($id)
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+
 		if($this->input->post('simpan'))
 		{
 			if(empty($_FILES['foto']['name'])) 
@@ -191,6 +207,10 @@ class Bayi extends CI_Controller {
 
 	public function hapus_data_bayi($id)
 	{
+		if($this->session->userdata('username') == "") {
+			redirect('Login','refresh');
+		}
+		
 		$obj2 = $this->M_model->getBayi($id);
 		unlink('./assets/foto/'.$obj2->foto_bayi);
 

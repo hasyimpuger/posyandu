@@ -67,6 +67,18 @@ class M_model extends CI_Model {
 	public function updateImunisasi($data) {
 		return $this->db->update('tb_imunisasi', $data);
 	}
+
+	public function userlogin($user, $pass) {
+		$hash = sha1(md5($pass));
+		$this->db->where("username", $user);
+		$this->db->where("password", $hash);
+		$query = $this->db->get("tb_user");
+		if($query->num_rows() > 0) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
 }
 
 /* End of file m_model.php */
